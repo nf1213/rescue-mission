@@ -1,0 +1,7 @@
+<h1><%= @question.title %></h1>
+
+<h3><%= @question.description %></h3>
+<% @question.answers.each do |answer| %>
+  <p><%= answer.user.user_name %> answered:</p>
+  <p><%= answer.description %></p>
+<% end %>
