@@ -1,7 +1,11 @@
-<h1><%= @question.title %></h1>
+<div class='q'>
+  <h1><%= @question.title %></h1>
 
-<h3><%= @question.description %></h3>
+  <h3><%= @question.description %></h3>
+</div>
 <% @question.answers.each do |answer| %>
-  <p><%= answer.user.user_name %> answered:</p>
-  <p><%= answer.description %></p>
+  <div class='ans'>
+    <p><%= answer.user.user_name %> answered:</p>
+    <p><%= answer.description %></p>
+  </div
 <% end %>

@@ -27,4 +27,46 @@
   width: 100px;
   text-align: center;
   padding: 10px;
+  float: right;
+}
+
+.question {
+  padding: 10px;
+  background-color: #112233;
+  margin: 10px;
+  width: 1000px;
+  margin-left:auto;
+  margin-right: auto;
+}
+
+.question h2 {
+  color: white;
+}
+
+nav {
+  background: #DDDDDD;
+  margin-top: -20px;
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-bottom: 25px;
+  padding: 10px;
+}
+
+.q {
+  width: 1000px;
+  background: #bbbbbb;
+  padding: 10px;
+  margin-left:auto;
+  margin-right: auto;
+  word-wrap: break-word;
+}
+
+.ans {
+  background: #dddddd;
+  padding: 10px;
+  width: 900px;
+  margin-left:auto;
+  margin-right: auto;
+  margin-top: 20px;
+  word-wrap: break-word;
 }
