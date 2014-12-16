@@ -1,0 +1,30 @@
+<h1>Post your answer!</h1>
+
+<div class='q'>
+  <h1><%= @question.title %></h1>
+
+  <h3><%= @question.description %></h3>
+</div>
+<%= form_for([@question, @answer]) do |f| %>
+<% if @answer.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
+
+  <ul>
+    <% @answer.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field">
+  <%= f.label :description %><br>
+  <%= f.text_field :description %>
+</div>
+
+<div class="actions">
+  <%= f.submit "Post" %>
+</div>
+
+<% end %>
