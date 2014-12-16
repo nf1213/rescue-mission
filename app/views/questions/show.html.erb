@@ -3,11 +3,11 @@
 
   <h3><%= @question.description %></h3>
 
-  <button><%= link_to 'Destroy this question', @question, method: :delete, data: { confirm: 'Are you sure?' } %></button>
-  <button><%= link_to 'Edit this question', edit_question_path(@question) %></button>
+  <div class='link_button'><%= link_to 'Destroy this question', @question, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+  <div class='link_button'><%= link_to 'Edit this question', edit_question_path(@question) %></div>
 </div>
 
-<a href="/questions/<%= @question.id %>/answers/new"><div class="answer_button ">Answer this</div>
+<a href="<%= new_question_answer_path(@question.id) %>"><div class="answer_button ">Answer this</div>
 
 <% @question.answers.each do |answer| %>
   <div class='ans'>

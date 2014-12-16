@@ -8,8 +8,8 @@
 </head>
 <body>
   <nav>
-    <a href="/questions/new"><div class="button">New Question</div></a>
-    <a href="/questions"><h1>SpaceOverflow</h1></a>
+    <a href="<%= new_question_path %>"><div class="button">New Question</div></a>
+    <a href="<%= questions_path %>"><div class='title'>SpaceOverflow</div></a>
     <% if notice %>
       <div class="notice">
         <%= notice %>
