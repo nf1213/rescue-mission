@@ -14,7 +14,7 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-
+    @question = Question.find(params[:id])
   end
 
   def create
@@ -28,11 +28,19 @@ class QuestionsController < ApplicationController
   end
 
   def update
-
+    @question = Question.find(params[:id])
+    @question.update(question_params)
+    if @question.save
+      redirect_to @question, notice: 'Question was updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
-
+    @question = Question.find(params[:id])
+    @question.destroy
+    redirect_to questions_path, notice: "Question deleted"
   end
 
   def new

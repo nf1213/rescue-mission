@@ -9,7 +9,12 @@
 <body>
   <nav>
     <a href="/questions/new"><div class="button">New Question</div></a>
-    <a href="/questions"><h1>ALL THE QUESTIONS!</h1></a>
+    <a href="/questions"><h1>SpaceOverflow</h1></a>
+    <% if notice %>
+      <div class="notice">
+        <%= notice %>
+      </div>
+    <% end %>
   </nav>
   <%= yield %>
 

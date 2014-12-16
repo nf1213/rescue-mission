@@ -2,10 +2,16 @@
   <h1><%= @question.title %></h1>
 
   <h3><%= @question.description %></h3>
+
+  <button><%= link_to 'Destroy this question', @question, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+  <button><%= link_to 'Edit this question', edit_question_path(@question) %></button>
 </div>
+
+<a href="/questions/<%= @question.id %>/answers/new"><div class="answer_button ">Answer this</div>
+
 <% @question.answers.each do |answer| %>
   <div class='ans'>
     <p><%= answer.user.user_name %> answered:</p>
     <p><%= answer.description %></p>
-  </div
+  </div>
 <% end %>
