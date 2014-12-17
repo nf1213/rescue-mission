@@ -1,8 +1,6 @@
 class AnswersController < ApplicationController
 
-  def current_user_id
-    1
-  end
+  before_action :authenticate_user!, only: [:destroy, :delete, :new, :create]
 
   def new
     @question = Question.find(params[:question_id])
@@ -12,7 +10,7 @@ class AnswersController < ApplicationController
   def create
     @question = Question.find(params[:question_id])
     @answer = Answer.new(answer_params)
-    @answer.user_id = current_user_id
+    @answer.user_id = current_user.id
     @answer.question_id = @question.id
     if @answer.save
       redirect_to @question, notice: 'Answer was successfully created.'

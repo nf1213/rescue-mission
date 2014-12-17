@@ -11,7 +11,7 @@
 
 <% @question.answers.each do |answer| %>
   <div class='ans'>
-    <p><%= answer.user.user_name %> answered:</p>
+    <p><%= answer.user.email %> answered:</p>
     <p><%= answer.description %></p>
   </div>
 <% end %>

@@ -1,7 +1,7 @@
 <% @questions.each do |question| %>
   <div class="question">
     <a href="<%= question_path(question.id) %>" >
-      <h2><%= question.user.user_name %> asked: <%= question.title %></h2>
+      <h2><%= question.user.email %> asked: <%= question.title %></h2>
     </a>
   </div>
 <% end %>

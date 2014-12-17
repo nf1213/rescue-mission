@@ -1,8 +1,6 @@
 class QuestionsController < ApplicationController
 
-  def current_user_id
-    1
-  end
+  before_action :authenticate_user!, only: [:destroy, :delete, :new, :create, :edit, :update]
 
   def index
     @questions = Question.all.order(created_at: :desc)
@@ -15,11 +13,14 @@ class QuestionsController < ApplicationController
 
   def edit
     @question = Question.find(params[:id])
+    if current_user.id != @question.user_id
+      redirect_to @question, notice: 'You did not create this question'
+    end
   end
 
   def create
     @question = Question.new(question_params)
-    @question.user_id = current_user_id
+    @question.user_id = current_user.id
     if @question.save
       redirect_to @question, notice: 'Question was successfully created.'
     else
@@ -39,8 +40,12 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question = Question.find(params[:id])
-    @question.destroy
-    redirect_to questions_path, notice: "Question deleted"
+    if current_user.id != @question.user_id
+      redirect_to @question, notice: 'You did not create this question'
+    else
+      @question.destroy
+      redirect_to questions_path, notice: "Question deleted"
+    end
   end
 
   def new
