@@ -10,12 +10,19 @@ feature 'User posts a question' do
   # - I must provide a title that is at least 40 characters long
   # - I must provide a description that is at least 150 characters long
   # - I must be presented with errors if I fill out the form incorrectly
-  User.create(user_name: "Bob")
+
+  #user = User.create(email: "Bob@bob.bob", password: "44444444")
+  user = User.first
+  before do
+    sign_in_as(user)
+  end
+
   title = "Sed ut perspiciatis unde omnis iste natus"
   description = "Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. L"
 
   scenario 'With valid attributes' do
     visit questions_path
+
     click_on 'New Question'
 
     fill_in "Title", with: title

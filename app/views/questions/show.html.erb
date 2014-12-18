@@ -2,9 +2,12 @@
   <h1><%= @question.title %></h1>
 
   <h3><%= @question.description %></h3>
-
-  <div class='link_button'><%= link_to 'Destroy this question', @question, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-  <div class='link_button'><%= link_to 'Edit this question', edit_question_path(@question) %></div>
+  <% if current_user %>
+    <% if current_user.id == @question.user_id %>
+      <div class='link_button'><%= link_to 'Destroy this question', @question, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+      <div class='link_button'><%= link_to 'Edit this question', edit_question_path(@question) %></div>
+    <% end %>
+  <% end %>
 </div>
 
 <a href="<%= new_question_answer_path(@question.id) %>"><div class="answer_button ">Answer this</div>
